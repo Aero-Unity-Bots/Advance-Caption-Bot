@@ -43,13 +43,13 @@ Eg:- `/set_cap
 
     ABOUT_TXT = """<b>╔════❰ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ❱═❍⊱❁
 ║╭━━━━━━━━━━━━━━━➣
-║┣⪼<b>📃 ʙᴏᴛ : <a href='https://t.me/Mr_Mohammed_29>Auto Caption</a></b>
+║┣⪼<b>📃 ʙᴏᴛ : <a href='http://t.me/AU_Caption_bot'>Auto Caption</a></b>
 ║┣⪼<b>👦 Cʀᴇᴀᴛᴏʀ : <a href='https://t.me/Mr_Mohammed_29>ᴍᴏʜᴀᴍᴍᴇᴅ</a></b>
 ║┣⪼<b>🤖 Uᴘᴅᴀᴛᴇ : <a href='https://t.me/Aero_Unity'>ᴀᴇʀᴏ ᴜɴɪᴛʏ</a></b>
 ║┣⪼<b>📡 Hᴏsᴛᴇᴅ ᴏɴ : <a href='https://t.me/Aero_Unity'>ᴀᴇʀᴏ ᴜɴɪᴛʏ</a></b>
 ║┣⪼<b>🗣️ Lᴀɴɢᴜᴀɢᴇ : Pʏᴛʜᴏɴ3</b>
 ║┣⪼<b>📚 Lɪʙʀᴀʀʏ : Pʏʀᴏɢʀᴀᴍ 2.11.6</b>
-║┣⪼<b>🗒️ Vᴇʀsɪᴏɴ : 2.0.8 [ᴍᴏsᴛ sᴛᴀʙʟᴇ]<b>
+║┣⪼<b>🗒️ Vᴇʀsɪᴏɴ : 2.0.8 [ᴍᴏsᴛ sᴛᴀʙʟᴇ]</b>
 ║╰━━━━━━━━━━━━━━━➣
 ╚══════════════════❍⊱❁</b>"""
 
