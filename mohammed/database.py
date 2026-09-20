@@ -19,6 +19,8 @@ client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_DB)
 db = client.captions_with_chnl
 chnl_ids = db.chnl_ids
 users = db.users
+banned_users = db.banned_users
+bot_admins = db.bot_admins
 
 # ------------------------ #
 # Don't Remove My Credits
