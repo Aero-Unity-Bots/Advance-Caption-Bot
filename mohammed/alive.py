@@ -8,38 +8,35 @@
 import time
 
 from pyrogram import Client, filters
-from info import ADMIN
 
 
-# Put your Telegram sticker file_id here
 ALIVE_STICKER = "CgACAgQAAxkBAAIOpmqwBoY0C00jo6t2rIxYpUICEqeTAAItCgACvoykUDAPxxyDdh_CHgQ"
 
 
 # ------------------------ #
 # ALIVE COMMAND
-# ADMIN ONLY
+# ALL USERS
 # ------------------------ #
 
 @Client.on_message(
-    filters.private &
-    filters.command("alive")
+    filters.private & filters.command("alive")
 )
 async def alive_command(client, message):
 
     start_time = time.perf_counter()
 
-    # Send sticker
-    await message.reply_sticker(
-        sticker=ALIVE_STICKER
-    )
+    try:
+        await message.reply_sticker(
+            sticker=ALIVE_STICKER
+        )
+    except Exception as e:
+        print(f"Alive sticker error: {e}")
 
-    # Calculate ping
     ping = round(
         (time.perf_counter() - start_time) * 1000,
         2
     )
 
-    # Send alive text
     await message.reply_text(
         "<b>╭━━━━━━━━━━━━━━━━━━╮\n"
         "      🤖 Bᴏᴛ Is Aʟɪᴠᴇ!\n"
@@ -47,8 +44,9 @@ async def alive_command(client, message):
         f"⚡ <b>Pɪɴɢ:</b> <code>{ping} ms</code>\n"
         "🟢 <b>Sᴛᴀᴛᴜs:</b> Oɴʟɪɴᴇ\n"
         "🚀 <b>Sᴇʀᴠᴇʀ:</b> Rᴜɴɴɪɴɢ\n\n"
-        " <b>Yᴏᴜ ᴀʀᴇ ᴠᴇʀʏ ʟᴜᴄᴋʏ 🤞 I ᴀᴍ ᴀʟɪᴠᴇ ❤️ "
-        "Pʀᴇss /start ᴛᴏ ᴜsᴇ ᴍᴇ</b>"
+        "<b>Yᴏᴜ ᴀʀᴇ ᴠᴇʀʏ ʟᴜᴄᴋʏ 🤞 "
+        "I ᴀᴍ ᴀʟɪᴠᴇ ❤️</b>\n\n"
+        "Pʀᴇss /start ᴛᴏ ᴜsᴇ ᴍᴇ"
     )
 
 
