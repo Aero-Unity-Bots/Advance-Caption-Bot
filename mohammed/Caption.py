@@ -25,21 +25,60 @@ from pyrogram.types import *
 async def strtCap(bot, message):
     user_id = int(message.from_user.id)
     await insert(user_id)
+
+    # ------------------------ #
+    # START ANIMATION
+    # ------------------------ #
+    try:
+        m = await message.reply_text("Sʜᴀᴅᴏᴡ Oғ Mᴏɴᴀʀᴄʜ. . .")
+        await asyncio.sleep(0.5)
+
+        await m.edit_text("⚡️")
+        await asyncio.sleep(0.5)
+
+        await m.edit_text("🐈‍⬛️")
+        await asyncio.sleep(0.5)
+
+        await m.edit_text("Yᴏʀᴜɪᴄʜɪ Sʜɪʜōɪɴ ✨")
+        await asyncio.sleep(0.5)
+
+        await m.delete()
+    except Exception:
+        pass
+
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ➕️", url=f"http://t.me/AU_Caption_bot?startchannel=true")
-            ],[
+                InlineKeyboardButton(
+                    "➕️ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ᴄʜᴀɴɴᴇʟ ➕️",
+                    url="http://t.me/AU_Caption_bot?startchannel=true"
+                )
+            ],
+            [
                 InlineKeyboardButton("• Hᴇʟᴘ •", callback_data="help"),
                 InlineKeyboardButton("• Aʙᴏᴜᴛ •", callback_data="about")
-            ],[
-                InlineKeyboardButton("• Uᴘᴅᴀᴛᴇ •", url=f"https://t.me/Aero_Unity"),
-                InlineKeyboardButton("• Sᴜᴘᴘᴏʀᴛ •", url=r"https://t.me/Coders_Grp")
-        ]]
+            ],
+            [
+                InlineKeyboardButton(
+                    "• Uᴘᴅᴀᴛᴇ •",
+                    url="https://t.me/Aero_Unity"
+                ),
+                InlineKeyboardButton(
+                    "• Sᴜᴘᴘᴏʀᴛ •",
+                    url="https://t.me/Coders_Grp"
+                )
+            ]
+        ]
     )
+
     await message.reply_photo(
         photo=MOHAMMED_PIC,
-        caption=f"<b>Hᴇʟʟᴏ {message.from_user.mention}\n\nɪ ᴀᴍ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴡɪᴛʜ ᴄᴜsᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ.\n\nFᴏʀ ᴍᴏʀᴇ ɪɴғᴏ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ᴄʟɪᴄᴋ ᴏɴ ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ.\n\nMᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ »<a href='https://t.me/Mr_Mohammed_29'>ᴍᴏʜᴀᴍᴍᴇᴅ</a></b>",
+        caption=f"<b>Hᴇʟʟᴏ {message.from_user.mention}\n\n"
+                f"ɪ ᴀᴍ ᴀᴜᴛᴏ ᴄᴀᴘᴛɪᴏɴ ʙᴏᴛ ᴡɪᴛʜ ᴄᴜsᴛᴏᴍ ᴄᴀᴘᴛɪᴏɴ.\n\n"
+                f"Fᴏʀ ᴍᴏʀᴇ ɪɴғᴏ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ᴄʟɪᴄᴋ ᴏɴ "
+                f"ʜᴇʟᴘ ʙᴜᴛᴛᴏɴ ɢɪᴠᴇɴ ʙᴇʟᴏᴡ.\n\n"
+                f"Mᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ »"
+                f"<a href='https://t.me/Mr_Mohammed_29'>ᴍᴏʜᴀᴍᴍᴇᴅ</a></b>",
         reply_markup=keyboard
     )
 
@@ -55,6 +94,13 @@ async def all_db_users_here(client,message):
     mohammed = await message.reply_text("Please Wait....")
     mohammed_botz = await total_user()
     await mohammed.edit(f"Tᴏᴛᴀʟ Usᴇʀ :- `{mohammed_botz}`")
+
+# ------------------------ #
+# Don't Remove My Credits
+# Owner: @Mr_Mohammed_29
+# Updates: @Aero_Unity 
+# Support : @Coders_Grp 
+# ------------------------ #
 
 @Client.on_message(filters.private & filters.user(ADMIN) & filters.command(["broadcast"]))
 async def broadcast(bot, message):
