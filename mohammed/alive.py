@@ -14,23 +14,24 @@ ALIVE_STICKER = "CgACAgQAAxkBAAIOpmqwBoY0C00jo6t2rIxYpUICEqeTAAItCgACvoykUDAPxxy
 
 
 # ------------------------ #
-# ALIVE COMMAND
-# ALL USERS
+# ALIVE
 # ------------------------ #
 
 @Client.on_message(
-    filters.private & filters.command("alive")
+    filters.private &
+    filters.command("alive")
 )
 async def alive_command(client, message):
 
     start_time = time.perf_counter()
 
     try:
-        await message.reply_sticker(
-            sticker=ALIVE_STICKER
+        await message.reply_animation(
+            animation=ALIVE_STICKER
         )
+
     except Exception as e:
-        print(f"Alive sticker error: {e}")
+        print(f"Alive animation error: {e}")
 
     ping = round(
         (time.perf_counter() - start_time) * 1000,
@@ -45,8 +46,8 @@ async def alive_command(client, message):
         "🟢 <b>Sᴛᴀᴛᴜs:</b> Oɴʟɪɴᴇ\n"
         "🚀 <b>Sᴇʀᴠᴇʀ:</b> Rᴜɴɴɪɴɢ\n\n"
         "<b>Yᴏᴜ ᴀʀᴇ ᴠᴇʀʏ ʟᴜᴄᴋʏ 🤞 "
-        "I ᴀᴍ ᴀʟɪᴠᴇ ❤️</b>\n\n"
-        "Pʀᴇss /start ᴛᴏ ᴜsᴇ ᴍᴇ"
+        "I ᴀᴍ ᴀʟɪᴠᴇ ❤️\n\n"
+        "Pʀᴇss /start ᴛᴏ ᴜsᴇ ᴍᴇ</b>"
     )
 
 
