@@ -34,6 +34,7 @@ def is_enabled(value, default):
 # ------------------------ #
 
 ADMIN = int(getenv("ADMIN", ""))
+OWNER_ID = int(getenv("OWNER_ID", ""))
 MOHAMMED_PIC = os.environ.get("MOHAMMED_PIC", "https://telegra.ph/file/1d504928e362876977269-fdfcffde7ab2ca4ed0.jpg")
 API_ID = int(getenv("API_ID", ""))
 API_HASH = str(getenv("API_HASH", ""))
