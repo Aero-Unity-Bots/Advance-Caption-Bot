@@ -5,10 +5,12 @@
 # Support : @Coders_Grp 
 # ------------------------ #
 
+import asyncio
 import threading
 import traceback
 
 from flask import Flask
+
 from bot import Bot
 
 
@@ -29,17 +31,29 @@ def hello_world():
 # ------------------------ #
 
 def start_bot():
+
     try:
+
         print("🚀 Starting Telegram Bot...")
+
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
 
         bot = Bot()
 
         print("🔌 Telegram Bot Instance Created")
 
-        bot.run()
+        loop.run_until_complete(bot.start())
+
+        print("✅ Telegram Bot Started Successfully")
+        print("📡 Waiting for Telegram Updates...")
+
+        loop.run_forever()
 
     except Exception as e:
+
         print(f"❌ Telegram Bot Error: {e}")
+
         traceback.print_exc()
 
 
