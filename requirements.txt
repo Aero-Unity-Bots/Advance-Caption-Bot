@@ -1,0 +1,24 @@
+# ------------------------ #
+# Don't Remove My Credits
+# Owner: @Mr_Mohammed_29
+# Updates: @Aero_Unity 
+# Support : @Coders_Grp 
+# ------------------------ #
+
+Flask
+gunicorn
+aiohttp
+motor
+asyncio
+pyrofork
+tgcrypto
+Jinja2==3.0.3
+werkzeug==2.0.2
+itsdangerous==2.0.1
+
+# ------------------------ #
+# Don't Remove My Credits
+# Owner: @Mr_Mohammed_29
+# Updates: @Aero_Unity 
+# Support : @Coders_Grp 
+# ------------------------ #
