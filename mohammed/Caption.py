@@ -58,10 +58,16 @@ HELP_TXT = """
 <code>/rem_words word1 word2</code>
 ➜ Remove words from file names.
 
+<code>/del_words word1 word2</code>
+➜ Add words to remove from file names.
+
 <code>/del_rem_words</code>
 ➜ Delete all remove words.
 
 <code>/replace_word old new</code>
+➜ Replace words in file names.
+
+<code>/replace_words old new</code>
 ➜ Replace words in file names.
 
 <code>/del_replace_words</code>
@@ -369,7 +375,13 @@ async def setCap(client, message):
             "Use <code>{language}</code> "
             "to show language.\n\n"
             "Use <code>{year}</code> "
-            "to show year."
+            "to show year.\n\n"
+            "Use <code>{duration}</code> "
+            "to show duration.\n\n"
+            "Use <code>{height}</code> "
+            "to show video height.\n\n"
+            "Use <code>{width}</code> "
+            "to show video width."
         )
 
     chnl_id = message.chat.id
@@ -407,7 +419,9 @@ async def setCap(client, message):
 # ------------------------ #
 
 @Client.on_message(
-    filters.command("replace_word") &
+    filters.command(
+        ["replace_word", "replace_words"]
+    ) &
     filters.channel
 )
 async def replace_word(client, message):
@@ -417,6 +431,8 @@ async def replace_word(client, message):
         return await message.reply(
             "Usage:\n"
             "<code>/replace_word old new</code>\n\n"
+            "or\n\n"
+            "<code>/replace_words old new</code>\n\n"
             "Multiple pairs:\n"
             "<code>/replace_word old new, old2 new2</code>"
         )
@@ -517,7 +533,9 @@ async def del_replace_words(client, message):
 # ------------------------ #
 
 @Client.on_message(
-    filters.command("rem_words") &
+    filters.command(
+        ["rem_words", "del_words"]
+    ) &
     filters.channel
 )
 async def setRemWords(client, message):
@@ -526,7 +544,9 @@ async def setRemWords(client, message):
 
         return await message.reply(
             "Usage:\n"
-            "<code>/rem_words word1 word2 word3</code>"
+            "<code>/rem_words word1 word2 word3</code>\n\n"
+            "or\n\n"
+            "<code>/del_words word1 word2 word3</code>"
         )
 
     chnl_id = message.chat.id
@@ -597,15 +617,24 @@ async def delCap(client, message):
 
     try:
 
-        result = await chnl_ids.delete_one(
-            {"chnl_id": chnl_id}
+        # Only remove the custom caption.
+        # Do NOT delete the complete channel document,
+        # otherwise remove_words and replacements are also lost.
+
+        result = await chnl_ids.update_one(
+            {"chnl_id": chnl_id},
+            {
+                "$unset": {
+                    "caption": ""
+                }
+            }
         )
 
-        if result.deleted_count:
+        if result.modified_count:
 
             return await message.reply(
                 "<b><i>✓ Sᴜᴄᴄᴇssғᴜʟʟʏ Dᴇʟᴇᴛᴇᴅ "
-                "Yᴏᴜʀ Cᴀᴘᴛɪᴏɴ.\n\n"
+                "Yᴏᴜʀ Cᴜsᴛᴏᴍ Cᴀᴘᴛɪᴏɴ.\n\n"
                 "Nᴏᴡ I Aᴍ Usɪɴɢ Mʏ Dᴇғᴀᴜʟᴛ Cᴀᴘᴛɪᴏɴ.</i></b>"
             )
 
@@ -791,7 +820,10 @@ def get_size(size):
 # AUTO CAPTION
 # ------------------------ #
 
-@Client.on_message(filters.channel)
+@Client.on_message(
+    filters.channel &
+    filters.media
+)
 async def reCap(client, message):
 
     chnl_id = message.chat.id
@@ -1088,7 +1120,7 @@ async def about(client, query):
             [
                 [
                     InlineKeyboardButton(
-                        "ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ ❓",
+                        "ʜᴏᴡ ᴛᴏ ᴜsᴇ Mᴇ ❓",
                         callback_data="help"
                     )
                 ],
